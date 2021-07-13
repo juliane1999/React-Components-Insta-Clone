@@ -6,8 +6,8 @@
 
 // Import the state hook
 import React, { useState } from 'react';
-import Posts from './components/Posts'
-import SearchBar from './components/SearchBar'
+import Posts from './components/Posts/Posts'
+import SearchBar from './components/SearchBar/SearchBar'
 // Import the Posts (plural!) and SearchBar components, since they are used inside App component
 // Import the dummyData
 import './App.css';
@@ -32,7 +32,14 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
-    
+    const newPost = posts.map(post => {
+      if(post.postId === postId){
+        return {...post, likePost}
+      } else {
+        return post
+      }
+    } )
+    setPosts(newPost)
   };
 
   return (
